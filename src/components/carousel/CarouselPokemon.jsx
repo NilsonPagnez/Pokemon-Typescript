@@ -1,6 +1,72 @@
 
 import Slider from "react-slick";
 import React from 'react'
+import './carousel.css'
+
+
+const testData = [
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+  {
+    id: 1,
+  },
+]
+var numero = 0
 
 function CarouselPokemon() {
   var settings = {
@@ -8,44 +74,33 @@ function CarouselPokemon() {
     slidesToShow: 3,
     slidesToScroll: 1,
     vertical: true,
+    adaptiveHeight: true,
+    focusOnSelect: true,
+    swipeToSlide:true,
     verticalSwiping: true,
-    beforeChange: function(currentSlide, nextSlide) {
+    beforeChange: function (currentSlide, nextSlide) {
       console.log("before change", currentSlide, nextSlide);
     },
-    afterChange: function(currentSlide) {
+    afterChange: function (currentSlide) {
       console.log("after change", currentSlide);
     }
   };
   return (
-    <Slider {...settings}>
-      <div>
-        <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      <div>
-        <h3>4</h3>
-      </div>
-      <div>
-        <h3>5</h3>
-      </div>
-      <div>
-        <h3>6</h3>
-      </div>
-      <div>
-        <h3>7</h3>
-      </div>
-      <div>
-        <h3>8</h3>
-      </div>
-      <div>
-        <h3>9</h3>
-      </div>
-    </Slider>
+    <aside className="carouselAside">
+      <Slider {...settings}>
+        {
+          testData.map(data => {
+            numero += 1
+            return (
+              <div>
+                <h3>{data.id + numero}</h3>
+              </div>
+            )
+          })
+        }
+
+      </Slider>
+    </aside>
   );
 }
 

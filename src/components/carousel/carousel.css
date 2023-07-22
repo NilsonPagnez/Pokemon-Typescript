@@ -1,0 +1,16 @@
+.carouselAside {
+    max-width: 100px;
+    height: 100%;
+}
+.carouselAside .slick-slider{
+    background-color: blue;
+    height: 100%;
+}
+
+.carouselAside .slick-slider .slick-list{
+    height: 100%!important;
+}
+
+.carouselAside .slick-slider .slick-list .slick-slide{
+    height: 100px ;
+}
