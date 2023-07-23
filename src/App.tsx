@@ -1,17 +1,9 @@
-
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
-import Initial from './pages/InitialPage/Initial';
-
-const queryClient = new QueryClient
+import Initial from './pages/InitialPage/Initial';    
 
 function App() {
   return (
     <>
-      <QueryClientProvider client={queryClient}>
         <Initial />
-        <ReactQueryDevtools />
-      </QueryClientProvider>
     </>
   );
 }
