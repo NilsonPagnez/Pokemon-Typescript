@@ -7,8 +7,12 @@ const config = {
     }
 }
 
-export default async function test(): Promise<Object> {
-    return axios.get<Object>("https://pokeapi.co/api/v2/pokemon/ditto", config)
+export const api = axios.create({
+    baseURL: 'https://pokeapi.co/api/v2/'
+})
+
+export default async function test(){
+    return axios.get(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=0`, config)
         .then((response: AxiosResponse<Object>) => {
             return response.data
         })

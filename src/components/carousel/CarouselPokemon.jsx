@@ -2,73 +2,10 @@
 import Slider from "react-slick";
 import React from 'react'
 import './carousel.css'
+import ApiCallTest from "../../custom/queryFunctions/ApiCallTest";
 
-
-const testData = [
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 1,
-  },
-]
-var numero = 0
-
-function CarouselPokemon() {
+function CarouselPokemon(props) {
+  
   var settings = {
     infinite: false,
     slidesToShow: 3,
@@ -88,17 +25,7 @@ function CarouselPokemon() {
   return (
     <aside className="carouselAside">
       <Slider {...settings}>
-        {
-          testData.map(data => {
-            numero += 1
-            return (
-              <div>
-                <h3>{data.id + numero}</h3>
-              </div>
-            )
-          })
-        }
-
+        {props.children}
       </Slider>
     </aside>
   );
