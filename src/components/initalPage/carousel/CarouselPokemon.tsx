@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import style from './carousel.module.scss'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { api } from '../../../custom/apiCalls/api';
+import { PokemonContext } from '../../../custom/context/pokemonContext';
 
 
 function ApiCallTest() {
@@ -9,6 +10,8 @@ function ApiCallTest() {
   interface Pokemon {
     name: string;
   }
+
+  const { setChosenPokemon } = useContext(PokemonContext)
 
   let pokeQtt: number = 30
   const [offset, setOffset] = useState<number>(0);
@@ -42,7 +45,6 @@ function ApiCallTest() {
     setOffset((prevOffset) => prevOffset + pokeQtt);
   };
 
-  console.log(pokemonList)
   return (
     <aside className={style.carouselAside}>
       <InfiniteScroll
@@ -54,7 +56,12 @@ function ApiCallTest() {
         <div className='teste'>
 
           {pokemonList.map((pokemon, index) => (
-            <div key={pokemon.name}>
+            <div key={pokemon.name} onClick={()=>{
+              setChosenPokemon({
+                name: pokemon.name,
+                id: index + 1
+              })
+              }}>
               {pokemon.name}
               {index + 1}
               <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/${index + 1}.png`} alt="" />
