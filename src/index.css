@@ -1,3 +1,8 @@
+:root {
+  --red: #f52549
+
+}
+
 * {
   box-sizing: border-box;
 }

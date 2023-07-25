@@ -1,5 +1,21 @@
 .carouselAside {
-    max-width: 250px;
+    max-width: 280px;
+    width: 100%;
     position: absolute;
-    z-index: 1;
+    z-index: 1; 
+    background-color: var(--red);
+    m
+    div div {
+        overflow: hidden;
+    }
+    .pokemonCard{
+        max-width: 200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+
+        div{
+            text-align: center;
+        }
+    }
 }

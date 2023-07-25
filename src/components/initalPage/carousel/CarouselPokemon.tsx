@@ -3,6 +3,7 @@ import style from './carousel.module.scss'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { api } from '../../../custom/apiCalls/api';
 import { PokemonContext } from '../../../custom/context/pokemonContext';
+import Loading from '../../../assets/loading/Loading';
 
 
 function ApiCallTest() {
@@ -51,19 +52,19 @@ function ApiCallTest() {
         dataLength={pokemonList.length}
         next={fetchMoreData}
         hasMore={true}
-        loader={<div className='teste'>{loading && <h1>Loading...</h1>}</div>}
+        loader={<div className='pokeChoiseCarousel'>{loading && <Loading/>}</div>}
       >
-        <div className='teste'>
-
+        <div className='pokeChoiseCarousel'>
           {pokemonList.map((pokemon, index) => (
-            <div key={pokemon.name} onClick={()=>{
+            <div className={style.pokemonCard} key={pokemon.name} onClick={()=>{
               setChosenPokemon({
                 name: pokemon.name,
                 id: index + 1
               })
-              }}>
-              {pokemon.name}
-              {index + 1}
+            }}>
+              <div>
+                {pokemon.name}
+              </div>
               <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/${index + 1}.png`} alt="" />
             </div>
           ))}
