@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { api } from '../../../custom/apiCalls/api';
 import { PokemonContext } from '../../../custom/context/pokemonContext';
 import Loading from '../../../assets/loading/Loading';
+import FilterTab from './FilterTab/FilterTab';
 
 
 function ApiCallTest() {
@@ -47,14 +48,14 @@ function ApiCallTest() {
   };
 
   return (
-    <aside className={style.carouselAside}>
+    <aside className={style.Aside}>
       <InfiniteScroll
         dataLength={pokemonList.length}
         next={fetchMoreData}
         hasMore={true}
-        loader={<div className='pokeChoiseCarousel'>{loading && <Loading/>}</div>}
+        loader={<div >{loading && <Loading/>}</div>}
       >
-        <div className='pokeChoiseCarousel'>
+        <div className={style.Aside__pokeChoiseCarousel}>
           {pokemonList.map((pokemon, index) => (
             <div className={style.pokemonCard} key={pokemon.name} onClick={()=>{
               setChosenPokemon({
@@ -62,14 +63,17 @@ function ApiCallTest() {
                 id: index + 1
               })
             }}>
-              <div>
+              <h3>
                 {pokemon.name}
-              </div>
+              </h3>
               <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/${index + 1}.png`} alt="" />
             </div>
           ))}
         </div>
       </InfiniteScroll>
+      
+      <FilterTab/>
+
     </aside>
   );
 }

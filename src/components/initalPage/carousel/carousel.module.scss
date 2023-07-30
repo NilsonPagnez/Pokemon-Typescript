@@ -1,21 +1,49 @@
-.carouselAside {
-    max-width: 280px;
-    width: 100%;
+@import "../../../styles/global/colorVar";
+
+.Aside {
     position: absolute;
     z-index: 1; 
     background-color: var(--red);
-    m
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
     div div {
         overflow: hidden;
     }
-    .pokemonCard{
-        max-width: 200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
+    &__pokeChoiseCarousel{
+        z-index: 10;
+        width: 170px;
+        margin: 0 50px;
+        
+        
+        .pokemonCard{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            /* From https://css.glass */
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
 
-        div{
+            margin: 10px 0;
+        }
+        img{
+            width: 140px;
+        }
+
+        h3{
+            margin-bottom: 0;
             text-align: center;
+            text-transform: uppercase;
         }
     }
+}
+
+.loader{
+    background-color: var(--red);
+    width: 100%;
 }
