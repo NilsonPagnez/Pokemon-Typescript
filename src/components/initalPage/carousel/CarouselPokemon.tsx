@@ -7,7 +7,8 @@ import Loading from '../../../assets/loading/Loading';
 import FilterTab from './FilterTab/FilterTab';
 
 
-function ApiCallTest() {
+function CarouselPokemon() {
+
 
   interface Pokemon {
     name: string;
@@ -49,34 +50,35 @@ function ApiCallTest() {
 
   return (
     <aside className={style.Aside}>
-      <InfiniteScroll
-        dataLength={pokemonList.length}
-        next={fetchMoreData}
-        hasMore={true}
-        loader={<div >{loading && <Loading/>}</div>}
-      >
-        <div className={style.Aside__pokeChoiseCarousel}>
-          {pokemonList.map((pokemon, index) => (
-            <div className={style.pokemonCard} key={pokemon.name} onClick={()=>{
-              setChosenPokemon({
-                name: pokemon.name,
-                id: index + 1
-              })
-            }}>
-              <h3>
-                {pokemon.name}
-              </h3>
-              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/${index + 1}.png`} alt="" />
-            </div>
-          ))}
-        </div>
-      </InfiniteScroll>
-      
-      <FilterTab/>
+      <div className={style.Aside__bgColor}>
+        <InfiniteScroll
+          dataLength={pokemonList.length}
+          next={fetchMoreData}
+          hasMore={true}
+          loader={<div >{loading && <Loading />}</div>}
+        >
+          <div className={style.Aside__pokeChoiseCarousel}>
+            {pokemonList.map((pokemon, index) => (
+              <div className={style.pokemonCard} key={pokemon.name} onClick={() => {
+                setChosenPokemon({
+                  name: pokemon.name,
+                  id: index + 1
+                })
+              }}>
+                <h3>
+                  {pokemon.name}
+                </h3>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/${index + 1}.png`} alt="" />
+              </div>
+            ))}
+          </div>
+        </InfiniteScroll>
+      </div>
+      <FilterTab />
 
     </aside>
   );
 }
 
-export default ApiCallTest;
+export default CarouselPokemon;
 
