@@ -18,6 +18,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-query": "^3.39.3",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.4",
     "react-slick": "^0.29.0",
     "react-spring": "^9.7.2",
     "sass": "^1.64.1",

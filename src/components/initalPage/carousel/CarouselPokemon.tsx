@@ -5,11 +5,11 @@ import { api } from '../../../custom/apiCalls/api';
 import { PokemonContext } from '../../../custom/context/pokemonContext';
 import Loading from '../../../assets/loading/Loading';
 import FilterTab from './FilterTab/FilterTab';
+import SearchFilter from './SearchFilter/SearchFilter';
 
 
 function CarouselPokemon() {
-
-
+  
   interface Pokemon {
     name: string;
   }
@@ -50,6 +50,7 @@ function CarouselPokemon() {
 
   return (
     <aside className={style.Aside}>
+      <SearchFilter/>
       <div className={style.Aside__bgColor}>
         <InfiniteScroll
           dataLength={pokemonList.length}

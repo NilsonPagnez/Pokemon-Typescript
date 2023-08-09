@@ -5,7 +5,7 @@ import { useSpring, animated } from 'react-spring';
 
 function FilterTab() {
   const [showFilter, setShowFilter] = useState(false);
-  const filterDiv = useRef<HTMLDivElement>(null); 
+  const filterDiv = useRef<HTMLDivElement>(null);
 
   const getTotalWidth = () => (showFilter ? `${filterDiv.current?.scrollWidth ?? 0}px` : '0px');
 
@@ -17,10 +17,8 @@ function FilterTab() {
   });
 
   const iconAnimation = useSpring({
-    transform: `translateX(${showFilter ? '360px' : '165px'})`
+    transform: `translateX(${showFilter ? '360px' : '160px'})`
   });
-
-
 
   return (
     <>
