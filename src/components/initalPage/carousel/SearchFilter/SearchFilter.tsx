@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { api } from '../../../../custom/apiCalls/api';
 import style from './searchFilter.module.scss';
-import AsyncSelect from 'react-select/async';
+import Select from 'react-select';
 
 interface Pokemon {
   name: string;
@@ -9,32 +9,38 @@ interface Pokemon {
 
 function SearchFilter() {
   const [allPokemon, setAllPokemon] = useState<Pokemon[]>([]);
-
-
-  async function getPokemons() {
-    const response = await api.get(`/pokemon?limit=100000&offset=0`);
-
-    const mapResponseToValuesAndLabels = (data:any) => ({
-      value: data.name,
-      label: data.name,
-    });
-
-    setAllPokemon(response.data.results.map(mapResponseToValuesAndLabels));
-    console.log(allPokemon)
-    
-    return allPokemon
-  }
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    async function getPokemons() {
+      try {
+        setLoading(true);
+        const response = await api.get(`/pokemon?limit=1000&offset=0`);
+        const mapResponseToValuesAndLabels = (data: any) => ({
+          value: data.name,
+          label: data.name,
+        });
+        setAllPokemon(response.data.results.map(mapResponseToValuesAndLabels));
+      } catch (error) {
+        console.log('Error: ', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
     getPokemons();
   }, []);
 
- 
 
   return (
     <div className={style.SearchDiv}>
-      <label htmlFor="pokemon" onClick={()=> console.log(allPokemon)}>Select your Pokemon</label>
-      <AsyncSelect loadOptions={getPokemons}/>
+      <label htmlFor="pokemon">Select your Pokemon</label>
+      <Select
+        options={allPokemon}
+        isLoading={loading}
+        placeholder="Selecione uma opção"
+      />
+
     </div>
   );
 }
